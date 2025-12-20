@@ -16,15 +16,11 @@ const handleClose = (key: string, keyPath: string[]) => {
   <div class="sidebar">
     <!-- 토글 버튼 -->
     <el-button
-        type="text"
-        class="collapse-toggle"
-        :class="{ open: !isCollapse, closed: isCollapse }"
+        type="primary"
+        :icon="Operation"
         @click="isCollapse = !isCollapse"
-    >
-      <el-icon>
-        <Operation/>
-      </el-icon>
-    </el-button>
+        class="collapse-toggle-btn"
+    />
 
     <!-- 메뉴 -->
     <el-menu
@@ -81,31 +77,22 @@ const handleClose = (key: string, keyPath: string[]) => {
 
 <style scoped>
 
-.collapse-toggle {
-  font-size: 22px;
-  padding-left: 20px;
-  transition: color 0.2s ease;
+/* 기본 상태: hover 효과 제거 */
+.collapse-toggle-btn {
+  /* Element Plus 기본 hover 변수들을 덮어쓰기 */
+  font-size: 20px; /* 아이콘 크기 키우기 */
+  --el-button-bg-color: transparent;
+  --el-button-border-color: transparent;
+  --el-button-text-color: #3a597a;
+  margin-left: 10px;
+  padding: 11px;
 }
 
-/* 닫힘 상태 */
-.collapse-toggle.closed {
-  color: #909399; /* 회색 */
+/* hover 되었을 때만 스타일 적용 */
+.collapse-toggle-btn:hover {
+  background-color: #ecf5ff;     /* 원하는 hover 배경색 */
+  border-color: #c6e2ff;         /* 원하는 hover border 색 */
+  color: #409eff;                /* 아이콘/텍스트 색 */
 }
-
-/* 열림 상태 */
-.collapse-toggle.open {
-  color: #409eff; /* 파랑 */
-}
-
-/* hover */
-.collapse-toggle:hover {
-  color: var(--el-color-primary-light-3);
-}
-
-/* active */
-.collapse-toggle:active {
-  color: var(--el-color-primary-dark-2);
-}
-
 
 </style>
