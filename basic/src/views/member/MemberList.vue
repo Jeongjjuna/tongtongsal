@@ -20,6 +20,9 @@ const members = inject(membersKey) as Map<number, Member>;
   </nav>
   <section>
     <h2>회원 리스트</h2>
+    <p>
+      신규 등록은 <router-link v-bind:to="{ name: 'MemberAdd' }">여기를</router-link> 클릭
+    </p>
     <section>
       <ul>
         <li v-for="[id, member] in members" v-bind:key="id">
