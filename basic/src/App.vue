@@ -1,11 +1,24 @@
 <script setup lang="ts">
 
 import {provide} from "vue";
+import type {Member} from "@/interfaces/Member.ts";
+import {membersKey} from "@/keys/membersKey.ts";
 
 const members = new Map<number, Member>();
-members.set(33345, {id: 33456, name: "영희", email: "bow@example.com", points: 35, note: "신규 가입 특전"})
-members.set(33345, {id: 33456, name: "철수", email: "mue@example.com", points: 35})
-provide("members", members)
+members.set(33456, {
+  id: 33456,
+  name: "영희",
+  email: "bow@example.com",
+  points: 35,
+  note: "신규 가입 특전"
+});
+members.set(33457, {
+  id: 33457,
+  name: "철수",
+  email: "mue@example.com",
+  points: 35
+});
+provide(membersKey, members);
 
 </script>
 
