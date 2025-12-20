@@ -24,7 +24,14 @@ const routeSettings: RouteRecordRaw[] = [
         id: Number(routes.params.id),
       };
     }
-  }
+  },
+  {
+    path: "/component/coponentList",
+    name: "ComponentList",
+    component: () => {
+      return import((`@/views/component/ComponentList.vue`));
+    },
+  },
 ];
 
 const router = createRouter({

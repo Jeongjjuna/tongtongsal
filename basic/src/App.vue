@@ -3,6 +3,7 @@
 import {provide} from "vue";
 import type {Member} from "@/interfaces/Member.ts";
 import {membersKey} from "@/keys/membersKey.ts";
+import SideMenu from "@/views/SideMenu.vue";
 
 const members = new Map<number, Member>();
 members.set(33456, {
@@ -23,12 +24,28 @@ provide(membersKey, members);
 </script>
 
 <template>
-  <header>
-    <h1>Vue 라우터 샘플</h1>
-  </header>
-  <main>
-    <RouterView/>
-  </main>
+
+  <el-row :gutter="20">
+    <el-col :span="20">
+      <header>
+        <h1>Vue 라우터 샘플</h1>
+      </header>
+    </el-col>
+  </el-row>
+
+  <el-row :gutter="20">
+    <el-col :span="8">
+      <aside id="sidebar">
+        <SideMenu/>
+      </aside>
+    </el-col>
+    <el-col :span="12">
+      <main>
+        <RouterView/>
+      </main>
+    </el-col>
+  </el-row>
+
 </template>
 
 <style>
@@ -49,12 +66,15 @@ main {
 #breadcrumbs ul {
   padding-left: 0;
 }
+
 #breadcrumbs ul .current {
   color: red;
 }
-#breadcrumbs ul li:before{
+
+#breadcrumbs ul li:before {
   content: " > ";
 }
+
 #breadcrumbs ul li:first-child:before {
   content: none;
 }
