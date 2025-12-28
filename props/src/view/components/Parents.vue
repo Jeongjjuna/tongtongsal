@@ -22,11 +22,12 @@ const onIncrementPoint = (number: number) => {
   -->
   <div class="container">
     <h1>부모</h1>
-    <p>랜덤 포인트 : {{ randomNumber}}</p>
+    <p>랜덤 포인트 : {{ randomNumber }}</p>
     <Child
-      v-bind:title="propsTitle"
-      v-bind:content="propsContent"
-      v-on:incrementPoint="onIncrementPoint"
+        v-bind:title="propsTitle"
+        v-bind:content="propsContent"
+        v-model:randomNumber="randomNumber"
+        v-on:incrementPoint="onIncrementPoint"
     />
   </div>
 </template>

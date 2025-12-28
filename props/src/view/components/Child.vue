@@ -36,13 +36,20 @@ const defaultProps = withDefaults(
  */
 interface Emits {
   (event: "incrementPoint", randomNumber: number): void
+
+  (event: "update:randomNumber", randomNumber: number): void
 }
 
 const emit = defineEmits<Emits>();
 
-const emitIncrementPoint = (): void => {
+const emitIncrementPoint1 = (): void => {
   const randomNumber = Math.floor(Math.random() * 10) + 1
   emit('incrementPoint', randomNumber)
+}
+
+const emitIncrementPoint2 = (): void => {
+  const randomNumber = Math.floor(Math.random() * 10) + 1
+  emit('update:randomNumber', randomNumber)
 }
 
 </script>
@@ -56,7 +63,9 @@ const emitIncrementPoint = (): void => {
       <li>{{ defaultProps.detail }}</li>
     </ul>
 
-    <button v-on:click="emitIncrementPoint">부모의 포인트를 랜덤으로!</button>
+    <button v-on:click="emitIncrementPoint1">부모의 포인트를 랜덤으로!</button>
+
+    <button v-on:click="emitIncrementPoint2">부모의 포인트를 랜덤으로!(v-model 활용)</button>
   </div>
 </template>
 
