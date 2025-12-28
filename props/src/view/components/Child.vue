@@ -5,6 +5,8 @@
  *   const props = defineProps<Props>()
  */
 
+import Grandchild from "@/view/components/Grandchild.vue";
+
 /**
  *   2. default 값 사용
  *
@@ -55,22 +57,22 @@ const emitIncrementPoint2 = (): void => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="child-container">
     <h1>자식</h1>
     <ul>
       <li>{{ defaultProps.title }}</li>
       <li>{{ defaultProps.content }}</li>
       <li>{{ defaultProps.detail }}</li>
     </ul>
-
     <button v-on:click="emitIncrementPoint1">부모의 포인트를 랜덤으로!</button>
-
     <button v-on:click="emitIncrementPoint2">부모의 포인트를 랜덤으로!(v-model 활용)</button>
+
+    <Grandchild />
   </div>
 </template>
 
 <style scoped>
-.container {
+.child-container {
   border: #409eff 2px solid;
   margin: 10px;
 }

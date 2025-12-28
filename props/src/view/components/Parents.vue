@@ -20,7 +20,7 @@ const onIncrementPoint = (number: number) => {
     ...
   />
   -->
-  <div class="container">
+  <div class="parent-container">
     <h1>부모</h1>
     <p>랜덤 포인트 : {{ randomNumber }}</p>
     <Child
@@ -33,7 +33,7 @@ const onIncrementPoint = (number: number) => {
 </template>
 
 <style scoped>
-.container {
+.parent-container {
   border: #a82256 2px solid;
   margin: 10px;
 }
