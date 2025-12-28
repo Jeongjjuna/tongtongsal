@@ -3,8 +3,13 @@
 import Child from "@/view/components/Child.vue";
 import {ref} from "vue";
 
+const randomNumber = ref(10);
 const propsTitle = ref("제목입니다.")
 const propsContent = ref("내용입니다.")
+
+const onIncrementPoint = (number: number) => {
+  randomNumber.value = number
+}
 
 </script>
 
@@ -17,9 +22,11 @@ const propsContent = ref("내용입니다.")
   -->
   <div class="container">
     <h1>부모</h1>
+    <p>랜덤 포인트 : {{ randomNumber}}</p>
     <Child
       v-bind:title="propsTitle"
       v-bind:content="propsContent"
+      v-on:incrementPoint="onIncrementPoint"
     />
   </div>
 </template>

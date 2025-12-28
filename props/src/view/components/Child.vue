@@ -1,11 +1,5 @@
 <script setup lang="ts">
 
-interface Props {
-  title: string
-  content: string
-  detail?: string
-}
-
 /**
  *   1. 기본 사용
  *   const props = defineProps<Props>()
@@ -22,10 +16,34 @@ interface Props {
  *      }
  *   )
  */
+interface Props {
+  title: string
+  content: string
+  detail?: string
+}
+
 const defaultProps = withDefaults(
     defineProps<Props>(),
     {detail: "[undefined]"},
 )
+
+/**
+ * interface Emits {
+ *   (event: "이벤트명"): void;
+ *   ...
+ * }
+ * const emit = defineEmits<Emits>();
+ */
+interface Emits {
+  (event: "incrementPoint", randomNumber: number): void
+}
+
+const emit = defineEmits<Emits>();
+
+const emitIncrementPoint = (): void => {
+  const randomNumber = Math.floor(Math.random() * 10) + 1
+  emit('incrementPoint', randomNumber)
+}
 
 </script>
 
@@ -37,6 +55,8 @@ const defaultProps = withDefaults(
       <li>{{ defaultProps.content }}</li>
       <li>{{ defaultProps.detail }}</li>
     </ul>
+
+    <button v-on:click="emitIncrementPoint">부모의 포인트를 랜덤으로!</button>
   </div>
 </template>
 
